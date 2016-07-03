@@ -101,69 +101,69 @@ var FTCResQCalculatorForm = React.createClass({
                 this.setState({ scores: s });
                 break;
 
-            case "autonButtonScore":
+            case "autonButtonScore2":
                 var s = this.state.scores;
-                s.autonButtonScore = parseInt(score);
+                s.autonButtonScore2 = parseInt(score);
                 this.setState({ scores: s });
                 break;
-            case "autonClimbersScore":
+            case "autonClimbersScore2":
                 var s = this.state.scores;
-                s.autonClimbersScore = parseInt(score);
+                s.autonClimbersScore2 = parseInt(score);
                 this.setState({ scores: s });
                 break;
-            case "autonMountainScore":
+            case "autonMountainScore2":
                 var s = this.state.scores;
-                s.autonMountainScore = parseInt(score);
+                s.autonMountainScore2 = parseInt(score);
                 this.setState({ scores: s });
                 break;
-            case "teleopClimbersScore":
+            case "teleopClimbersScore2":
                 var s = this.state.scores;
-                s.teleopClimbersScore = parseInt(score);
+                s.teleopClimbersScore2 = parseInt(score);
                 this.setState({ scores: s });
                 break;
-            case "highBucketScore":
+            case "highBucketScor2e":
                 var s = this.state.scores;
-                s.highBucketScore = parseInt(score);
+                s.highBucketScore2 = parseInt(score);
                 this.setState({ scores: s });
                 break;
-            case "midBucketScore":
+            case "midBucketScore2":
                 var s = this.state.scores;
-                s.midBucketScore = parseInt(score);
+                s.midBucketScore2 = parseInt(score);
                 this.setState({ scores: s });
                 break;
-            case "lowBucketScore":
+            case "lowBucketScore2":
                 var s = this.state.scores;
-                s.lowBucketScore = parseInt(score);
+                s.lowBucketScore2 = parseInt(score);
                 this.setState({ scores: s });
                 break;
-            case "floorGoalScore":
+            case "floorGoalScore2":
                 var s = this.state.scores;
-                s.floorGoalScore = parseInt(score);
+                s.floorGoalScore2 = parseInt(score);
                 this.setState({ scores: s });
                 break;
-            case "lowZiplineClimberScore":
+            case "lowZiplineClimberScore2":
                 var s = this.state.scores;
-                s.lowZiplineClimberScore = parseInt(score);
+                s.lowZiplineClimberScore2 = parseInt(score);
                 this.setState({ scores: s });
                 break;
-            case "midZiplineClimberScore":
+            case "midZiplineClimberScore2":
                 var s = this.state.scores;
-                s.midZiplineClimberScore = parseInt(score);
+                s.midZiplineClimberScore2 = parseInt(score);
                 this.setState({ scores: s });
                 break;
-            case "highZiplineClimberScore":
+            case "highZiplineClimberScore2":
                 var s = this.state.scores;
-                s.highZiplineClimberScore = parseInt(score);
+                s.highZiplineClimberScore2 = parseInt(score);
                 this.setState({ scores: s });
                 break;
-            case "allClearScore":
+            case "allClearScore2":
                 var s = this.state.scores;
-                s.allClearScore = parseInt(score);
+                s.allClearScore2 = parseInt(score);
                 this.setState({ scores: s });
                 break;
-            case "endgameMountainScore":
+            case "endgameMountainScore2":
                 var s = this.state.scores;
-                s.endgameMountainScore = parseInt(score);
+                s.endgameMountainScore2 = parseInt(score);
                 this.setState({ scores: s });
                 break;
             default:
@@ -174,10 +174,10 @@ var FTCResQCalculatorForm = React.createClass({
         return (
             <div>
                 <h1>FTC ResQ Calculator Form</h1>
-                <ScoreLabel scores = {this.state.scores}/>
                 <Autonomous scores = {this.state.scores} handleScoreChange = {this.handleScoreChange}/>
                 <Teleop scores = {this.state.scores} handleScoreChange = {this.handleScoreChange}/>
                 <Endgame scores = {this.state.scores} handleScoreChange = {this.handleScoreChange}/>
+                <ScoreLabel scores = {this.state.scores}/>
             </div>
         );
     }
@@ -187,14 +187,47 @@ class ScoreCalculator {
     constructor(scores) {
         this.scores = scores;
     }
+    getTotalAutonButtonScore(){
+        var score = this.scores.autonButtonScore1 + this.scores.autonButtonScore2
+        return score;
+    }
     getZiplineClimbersScore1(){
         var ziplineClimbersScore = this.scores.lowZiplineClimberScore1 + this.scores.midZiplineClimberScore1
          + this.scores.highZiplineClimberScore1;
-         return ziplineClimbersScore;
+        return ziplineClimbersScore;
+    }
+    getZiplineClimbersScore2(){
+        var ziplineClimbersScore = this.scores.lowZiplineClimberScore2 + this.scores.midZiplineClimberScore2
+         + this.scores.highZiplineClimberScore2;
+        return ziplineClimbersScore;
+    }
+    getTotalZiplineClimbersScore(){
+        var high = 0;
+        var mid = 0;
+        var low = 0;
+        if(this.scores.highZiplineClimberScore1 == 20 || this.scores.highZiplineClimberScore2 == 20){
+            high = 20
+        }
+        if(this.scores.midZiplineClimberScore1 == 20 || this.scores.midZiplineClimberScore2 == 20){
+            mid = 20
+        }
+        if(this.scores.lowZiplineClimberScore1 == 20 || this.scores.lowZiplineClimberScore2 == 20){
+            low = 20
+        }
+        return high + mid + low;
     }
     getDebrisScore1() {
         var debrisScore = this.scores.highBucketScore1 + this.scores.midBucketScore1 + this.scores.lowBucketScore1
             + this.scores.floorGoalScore1;
+        return debrisScore;
+    }
+    getDebrisScore2() {
+        var debrisScore = this.scores.highBucketScore2 + this.scores.midBucketScore2 + this.scores.lowBucketScore2
+            + this.scores.floorGoalScore2;
+        return debrisScore;
+    }
+    getTotalDebrisScore() {
+        var debrisScore = this.getDebrisScore1() + this.getDebrisScore2();
         return debrisScore;
     }
     getClimbersScore1() {
@@ -219,23 +252,81 @@ class ScoreCalculator {
         }
         return climbersScore;
     }
-    getSum1() {
-        var totalScore = this.scores.autonButtonScore1 + this.getClimbersScore() + this.scores.autonMountainScore1 + this.getDebrisScore()
-         + this.getZiplineClimbersScore() + this.scores.allClearScore1 + this.scores.endgameMountainScore1;
+    getClimbersScore2() {
+        var climbersScore = 0;
+        switch(this.scores.autonClimbersScore2){
+            case 0:
+                climbersScore = this.scores.teleopClimbersScore2
+                break;
+            case 10:
+                if(this.scores.teleopClimbersScore2 == 0){
+                    climbersScore = 20;
+                }
+                else {
+                    climbersScore = 30;
+                }
+                break;
+            case 20:
+                climbersScore = 40;
+                break;
+            default:
+                break;
+        }
+        return climbersScore;
+    }
+    getTotalClimbersScore() {
+        var score = this.getClimbersScore1() + this.getClimbersScore2();
+        return score;
+    }
+    getTotalAutonMountainScore(){
+        var score = this.scores.autonMountainScore1 + this.scores.autonMountainScore2;
+        return score;
+    }
+    getTotalAllClearScore(){
+        var score = this.scores.allClearScore1 + this.scores.allClearScore2;
+        return score;
+    }
+    getTotalEndgameMountainScore(){
+        var score = this.scores.endgameMountainScore1 + this.scores.endgameMountainScore2;
+        return score;
+    }
+    getPartialScore1() {
+        var totalScore = this.scores.autonButtonScore1 + this.getClimbersScore1() + this.scores.autonMountainScore1 + this.getDebrisScore1()
+         + this.getZiplineClimbersScore1() + this.scores.allClearScore1 + this.scores.endgameMountainScore1;
+        return totalScore;
+    }
+    getPartialScore2() {
+        var totalScore = this.scores.autonButtonScore2 + this.getClimbersScore2() + this.scores.autonMountainScore2 + this.getDebrisScore2()
+         + this.getZiplineClimbersScore2() + this.scores.allClearScore2 + this.scores.endgameMountainScore2;
+        return totalScore;
+    }
+    getTotalScore(){
+        var totalScore = this.getTotalAutonButtonScore() + this.getTotalClimbersScore() + this.getTotalAutonMountainScore() + this.getTotalDebrisScore()
+         + this.getTotalZiplineClimbersScore() + this.getTotalAllClearScore() + this.getTotalEndgameMountainScore();
         return totalScore;
     }
 }
 
 var ScoreLabel = React.createClass({
-    getSum: function (scores) {
+    getTotalScore: function (scores) {
         var scoreCalculator = new ScoreCalculator(scores);
-        return scoreCalculator.getSum();
+        return scoreCalculator.getTotalScore();
+    },
+    getPartialScore1: function (scores) {
+        var scoreCalculator = new ScoreCalculator(scores);
+        return scoreCalculator.getPartialScore1();
+    },
+    getPartialScore2: function (scores) {
+        var scoreCalculator = new ScoreCalculator(scores);
+        return scoreCalculator.getPartialScore2();
     },
     render: function () {
         return (
             <div>
-                <MyHeader> Total Score </MyHeader>
-                <h3>{this.getSum(this.props.scores) }</h3>
+                <MyHeader> Scores </MyHeader>
+                <h3> Total: { this.getTotalScore(this.props.scores) }</h3>
+                <h3> Partial Target 1: { this.getPartialScore1(this.props.scores) }</h3>
+                <h3> Partial Target 2: { this.getPartialScore2(this.props.scores) }</h3>
             </div>
         );
     }
@@ -263,7 +354,7 @@ var Autonomous = React.createClass({
 });
 
 var ScoreAutonButton = React.createClass({
-    handleChange: function (event) {
+    handleChange1: function (event) {
         var isPressed = (event.target.checked);
         var score = 0;
         if (isPressed) {
@@ -274,13 +365,26 @@ var ScoreAutonButton = React.createClass({
         };
         this.props.handleScoreChange(score, "autonButtonScore1");
     },
+    handleChange2: function (event) {
+        var isPressed = (event.target.checked);
+        var score = 0;
+        if (isPressed) {
+            score = 20;
+        }
+        else {
+            score = 0;
+        };
+        this.props.handleScoreChange(score, "autonButtonScore2");
+    },
     render: function () {
         return (
             <div>
-                <h3>Button Pressed</h3>
+                <h3>Button</h3>
                 <form>
-                    <input type="checkbox" name="isPressed" value="pressed" onChange={this.handleChange}
-                    checked={this.props.scores.autonButtonScore1 == 20}/> Successful Button Press
+                    <input type="checkbox" name="button1" value="pressed" onChange={this.handleChange1}
+                    checked={this.props.scores.autonButtonScore1 == 20}/> Successful Button Press Target 1 <br/>
+                    <input type="checkbox" name="button2" value="pressed" onChange={this.handleChange2}
+                    checked={this.props.scores.autonButtonScore2 == 20}/> Successful Button Press Target 2
                 </form>
             </div>
         );
