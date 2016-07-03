@@ -489,23 +489,38 @@ var Teleop = React.createClass({
 });
 
 var ScoreTeleopClimbers = React.createClass({
-    handleChange: function (event) {
+    handleChange1: function (event) {
         var score = (event.target.value)
         this.props.handleScoreChange(score, "teleopClimbersScore1");
+    },
+    handleChange2: function (event) {
+        var score = (event.target.value)
+        this.props.handleScoreChange(score, "teleopClimbersScore2");
     },
     render: function () {
         return (
             <div>
                 <h3>Climbers Delivered</h3>
                 <form>
-                    <input type="radio" name="teleopClimbersScore1" value={0} onChange={this.handleChange}
+                    <h4> Target 1: </h4>
+                    <input type="radio" name="teleopClimbersScore1" value={0} onChange={this.handleChange1}
                         checked={this.props.scores.teleopClimbersScore1 == 0}/> None <br/>
-                    <input type="radio" name="teleopClimbersScore1" value={10} onChange={this.handleChange}
+                    <input type="radio" name="teleopClimbersScore1" value={10} onChange={this.handleChange1}
                         checked={this.props.scores.teleopClimbersScore1 == 10}/> One <br/>
-                    <input type="radio" name="teleopClimbersScore1" value={20} onChange={this.handleChange}
+                    <input type="radio" name="teleopClimbersScore1" value={20} onChange={this.handleChange1}
                         checked={this.props.scores.teleopClimbersScore1 == 20}/> Both <br/>
                 </form>
+                <form>
+                    <h4> Target 2: </h4>
+                    <input type="radio" name="teleopClimbersScore2" value={0} onChange={this.handleChange2}
+                        checked={this.props.scores.teleopClimbersScore2 == 0}/> None <br/>
+                    <input type="radio" name="teleopClimbersScore2" value={10} onChange={this.handleChange2}
+                        checked={this.props.scores.teleopClimbersScore2 == 10}/> One <br/>
+                    <input type="radio" name="teleopClimbersScore2" value={20} onChange={this.handleChange2}
+                        checked={this.props.scores.teleopClimbersScore2 == 20}/> Both <br/>
+                </form>
             </div>
+            
         );
     }
 });
@@ -525,16 +540,24 @@ var Debris = React.createClass({
 });
 
 var ScoreHighBucket = React.createClass({
-    handleChange: function (event) {
+    handleChange1: function (event) {
         var score = (event.target.value) * 15;
         this.props.handleScoreChange(score, "highBucketScore1");
+    },
+    handleChange2: function (event) {
+        var score = (event.target.value) * 15;
+        this.props.handleScoreChange(score, "highBucketScore2");
     },
     render: function () {
         return (
             <div>
                 <form>
-                    High Bucket:
-                    <input type="number" name="high" min="0" max="16" value={(this.props.scores.highBucketScore1)/15} onChange={this.handleChange}/>
+                    <h4 >High Bucket Target 1: </h4>
+                    <input type="number" name="high" min="0" max="16" value={(this.props.scores.highBucketScore1)/15} onChange={this.handleChange1}/><br/>
+                </form>
+                <form>
+                    <h4 >High Bucket Target 2: </h4>
+                    <input type="number" name="high" min="0" max="16" value={(this.props.scores.highBucketScore2)/15} onChange={this.handleChange2}/><br/>
                 </form>
             </div>
         );
@@ -542,7 +565,11 @@ var ScoreHighBucket = React.createClass({
 });
 
 var ScoreMidBucket = React.createClass({
-    handleChange: function (event) {
+    handleChange1: function (event) {
+        var score = (event.target.value) * 10;
+        this.props.handleScoreChange(score, "midBucketScore1");
+    },
+    handleChange2: function (event) {
         var score = (event.target.value) * 10;
         this.props.handleScoreChange(score, "midBucketScore1");
     },
@@ -550,8 +577,12 @@ var ScoreMidBucket = React.createClass({
         return (
             <div>
                 <form>
-                    Mid Bucket:
-                    <input type="number" name="mid" min="0" max="16" value={(this.props.scores.midBucketScore1)/10} onChange={this.handleChange}/>
+                    <h4 >Mid Bucket Target 1: </h4>
+                    <input type="number" name="mid" min="0" max="16" value={(this.props.scores.midBucketScore1)/10} onChange={this.handleChange1}/><br/>
+                </form>
+                <form>
+                    <h4 >Mid Bucket Target 2: </h4>
+                    <input type="number" name="mid" min="0" max="16" value={(this.props.scores.midBucketScore2)/10} onChange={this.handleChange2}/><br/>
                 </form>
             </div>
         );
