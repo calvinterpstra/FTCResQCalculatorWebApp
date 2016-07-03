@@ -381,12 +381,14 @@ var ScoreAutonButton = React.createClass({
             <div>
                 <h3>Button</h3>
                 <form>
+                    <h4> Target 1: </h4>
                     <input type="checkbox" name="button1" value="pressed" onChange={this.handleChange1}
-                    checked={this.props.scores.autonButtonScore1 == 20}/> Successful Button Press Target 1 <br/>
+                    checked={this.props.scores.autonButtonScore1 == 20}/> Successful Button Press <br/>
                 </form>
                 <form>
+                    <h4> Target 2: </h4>
                     <input type="checkbox" name="button2" value="pressed" onChange={this.handleChange2}
-                    checked={this.props.scores.autonButtonScore2 == 20}/> Successful Button Press Target 2 <br/>
+                    checked={this.props.scores.autonButtonScore2 == 20}/> Successful Button Press <br/>
                 </form>
             </div>
         );
@@ -407,6 +409,7 @@ var ScoreAutonClimbers = React.createClass({
             <div>
                 <h3>Climbers Delivered</h3>
                 <form>
+                    <h4> Target 1: </h4>
                     <input type="radio" name="autonClimbersScore1" value={0} onChange={this.handleChange1}
                         checked={this.props.scores.autonClimbersScore1 == 0}/> None <br/>
                     <input type="radio" name="autonClimbersScore1" value={20} onChange={this.handleChange1}
@@ -415,6 +418,7 @@ var ScoreAutonClimbers = React.createClass({
                         checked={this.props.scores.autonClimbersScore1 == 40}/> Both <br/>
                 </form>
                 <form>
+                    <h4> Target 2: </h4>
                     <input type="radio" name="autonClimbersScore2" value={0} onChange={this.handleChange2}
                         checked={this.props.scores.autonClimbersScore2 == 0}/> None <br/>
                     <input type="radio" name="autonClimbersScore2" value={20} onChange={this.handleChange2}
@@ -428,25 +432,43 @@ var ScoreAutonClimbers = React.createClass({
 });
 
 var ScoreAutonMountain = React.createClass({
-    handleChange: function (event) {
+    handleChange1: function (event) {
         var score = (event.target.value)
         this.props.handleScoreChange(score, "autonMountainScore1");
+    },
+    handleChange2: function (event) {
+        var score = (event.target.value)
+        this.props.handleScoreChange(score, "autonMountainScore2");
     },
     render: function () {
         return (
             <div>
                 <h3>Autonomous Mountain Position</h3>
                 <form>
-                    <input type="radio" name="autonMountainScore1" value={0} onChange={this.handleChange}
+                    <h4> Target 1: </h4>
+                    <input type="radio" name="autonMountainScore1" value={0} onChange={this.handleChange1}
                         checked={this.props.scores.autonMountainScore1 == 0}/> None <br/>
-                    <input type="radio" name="autonMountainScore1" value={5} onChange={this.handleChange}
+                    <input type="radio" name="autonMountainScore1" value={5} onChange={this.handleChange1}
                         checked={this.props.scores.autonMountainScore1 == 5}/> Partial or Parking Zone <br/>
-                    <input type="radio" name="autonMountainScore1" value={10} onChange={this.handleChange}
+                    <input type="radio" name="autonMountainScore1" value={10} onChange={this.handleChange1}
                         checked={this.props.scores.autonMountainScore1 == 10}/> Low Zone <br/>
-                    <input type="radio" name="autonMountainScore1" value={20} onChange={this.handleChange}
+                    <input type="radio" name="autonMountainScore1" value={20} onChange={this.handleChange1}
                         checked={this.props.scores.autonMountainScore1 == 20}/> MidZone <br/>
-                    <input type="radio" name="autonMountainScore1" value={40} onChange={this.handleChange}
+                    <input type="radio" name="autonMountainScore1" value={40} onChange={this.handleChange1}
                         checked={this.props.scores.autonMountainScore1 == 40}/> High Zone <br/>
+                </form>
+                <form>
+                    <h4> Target 2: </h4>
+                    <input type="radio" name="autonMountainScore2" value={0} onChange={this.handleChange2}
+                        checked={this.props.scores.autonMountainScore2 == 0}/> None <br/>
+                    <input type="radio" name="autonMountainScore2" value={5} onChange={this.handleChange2}
+                        checked={this.props.scores.autonMountainScore2 == 5}/> Partial or Parking Zone <br/>
+                    <input type="radio" name="autonMountainScore2" value={10} onChange={this.handleChange2}
+                        checked={this.props.scores.autonMountainScore2 == 10}/> Low Zone <br/>
+                    <input type="radio" name="autonMountainScore2" value={20} onChange={this.handleChange2}
+                        checked={this.props.scores.autonMountainScore2 == 20}/> MidZone <br/>
+                    <input type="radio" name="autonMountainScore2" value={40} onChange={this.handleChange}
+                        checked={this.props.scores.autonMountainScore2 == 40}/> High Zone <br/>
                 </form>
             </div>
         );
