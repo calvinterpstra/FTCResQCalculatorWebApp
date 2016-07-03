@@ -258,7 +258,7 @@ class ScoreCalculator {
             case 0:
                 climbersScore = this.scores.teleopClimbersScore2
                 break;
-            case 10:
+            case 20:
                 if(this.scores.teleopClimbersScore2 == 0){
                     climbersScore = 20;
                 }
@@ -266,7 +266,7 @@ class ScoreCalculator {
                     climbersScore = 30;
                 }
                 break;
-            case 20:
+            case 40:
                 climbersScore = 40;
                 break;
             default:
@@ -409,17 +409,17 @@ var ScoreAutonClimbers = React.createClass({
                 <form>
                     <input type="radio" name="autonClimbersScore1" value={0} onChange={this.handleChange1}
                         checked={this.props.scores.autonClimbersScore1 == 0}/> None <br/>
-                    <input type="radio" name="autonClimbersScore1" value={10} onChange={this.handleChange1}
-                        checked={this.props.scores.autonClimbersScore1 == 20}/> One <br/>
                     <input type="radio" name="autonClimbersScore1" value={20} onChange={this.handleChange1}
+                        checked={this.props.scores.autonClimbersScore1 == 20}/> One <br/>
+                    <input type="radio" name="autonClimbersScore1" value={40} onChange={this.handleChange1}
                         checked={this.props.scores.autonClimbersScore1 == 40}/> Both <br/>
                 </form>
                 <form>
                     <input type="radio" name="autonClimbersScore2" value={0} onChange={this.handleChange2}
                         checked={this.props.scores.autonClimbersScore2 == 0}/> None <br/>
-                    <input type="radio" name="autonClimbersScore2" value={10} onChange={this.handleChange2}
-                        checked={this.props.scores.autonClimbersScore2 == 20}/> One <br/>
                     <input type="radio" name="autonClimbersScore2" value={20} onChange={this.handleChange2}
+                        checked={this.props.scores.autonClimbersScore2 == 20}/> One <br/>
+                    <input type="radio" name="autonClimbersScore2" value={40} onChange={this.handleChange2}
                         checked={this.props.scores.autonClimbersScore2 == 40}/> Both <br/>
                 </form>
             </div>
