@@ -383,8 +383,10 @@ var ScoreAutonButton = React.createClass({
                 <form>
                     <input type="checkbox" name="button1" value="pressed" onChange={this.handleChange1}
                     checked={this.props.scores.autonButtonScore1 == 20}/> Successful Button Press Target 1 <br/>
+                </form>
+                <form>
                     <input type="checkbox" name="button2" value="pressed" onChange={this.handleChange2}
-                    checked={this.props.scores.autonButtonScore2 == 20}/> Successful Button Press Target 2
+                    checked={this.props.scores.autonButtonScore2 == 20}/> Successful Button Press Target 2 <br/>
                 </form>
             </div>
         );
@@ -392,21 +394,33 @@ var ScoreAutonButton = React.createClass({
 });
 
 var ScoreAutonClimbers = React.createClass({
-    handleChange: function (event) {
+    handleChange1: function (event) {
         var score = (event.target.value)
         this.props.handleScoreChange(score, "autonClimbersScore1");
+    },
+    handleChange2: function (event) {
+        var score = (event.target.value)
+        this.props.handleScoreChange(score, "autonClimbersScore2");
     },
     render: function () {
         return (
             <div>
                 <h3>Climbers Delivered</h3>
                 <form>
-                    <input type="radio" name="autonClimbersScore1" value={0} onChange={this.handleChange}
+                    <input type="radio" name="autonClimbersScore1" value={0} onChange={this.handleChange1}
                         checked={this.props.scores.autonClimbersScore1 == 0}/> None <br/>
-                    <input type="radio" name="autonClimbersScore1" value={10} onChange={this.handleChange}
+                    <input type="radio" name="autonClimbersScore1" value={10} onChange={this.handleChange1}
                         checked={this.props.scores.autonClimbersScore1 == 20}/> One <br/>
-                    <input type="radio" name="autonClimbersScore1" value={20} onChange={this.handleChange}
+                    <input type="radio" name="autonClimbersScore1" value={20} onChange={this.handleChange1}
                         checked={this.props.scores.autonClimbersScore1 == 40}/> Both <br/>
+                </form>
+                <form>
+                    <input type="radio" name="autonClimbersScore2" value={0} onChange={this.handleChange2}
+                        checked={this.props.scores.autonClimbersScore2 == 0}/> None <br/>
+                    <input type="radio" name="autonClimbersScore2" value={10} onChange={this.handleChange2}
+                        checked={this.props.scores.autonClimbersScore2 == 20}/> One <br/>
+                    <input type="radio" name="autonClimbersScore2" value={20} onChange={this.handleChange2}
+                        checked={this.props.scores.autonClimbersScore2 == 40}/> Both <br/>
                 </form>
             </div>
         );
