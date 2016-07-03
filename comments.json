@@ -1,0 +1,32 @@
+[
+    {
+        "id": 1388534400000,
+        "author": "Pete Hunt",
+        "text": "Hey there!, test"
+    },
+    {
+        "id": 1420070400000,
+        "author": "Paul O’Shannessy",
+        "text": "React is *great*!, test"
+    },
+    {
+        "id": 1420070400001,
+        "author": "Calvin",
+        "text": "hello, testtesttest"
+    },
+    {
+        "id": 1420070400002,
+        "author": "asdf",
+        "text": "asdfasdfasdfasdf"
+    },
+    {
+        "id": 1467155396733,
+        "author": "Calvin2",
+        "text": "hello"
+    },
+    {
+        "id": 1467155402021,
+        "author": "asdf",
+        "text": "asdf"
+    }
+]
