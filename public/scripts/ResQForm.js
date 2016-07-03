@@ -236,7 +236,7 @@ class ScoreCalculator {
             case 0:
                 climbersScore = this.scores.teleopClimbersScore1
                 break;
-            case 10:
+            case 20:
                 if(this.scores.teleopClimbersScore1 == 0){
                     climbersScore = 20;
                 }
@@ -244,7 +244,7 @@ class ScoreCalculator {
                     climbersScore = 30;
                 }
                 break;
-            case 20:
+            case 40:
                 climbersScore = 40;
                 break;
             default:
