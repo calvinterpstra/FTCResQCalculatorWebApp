@@ -640,10 +640,10 @@ var ScoreFloorGoal = React.createClass({
 });
 
 var ScoreZiplineClimbers = React.createClass({
-    handleChange: function (event) {
+    handleChange1: function (event) {
         var isPressed = (event.target.checked);
         switch(event.target.name){
-            case "low":
+            case "low1":
                 if(isPressed){
                     this.props.handleScoreChange(20, "lowZiplineClimberScore1");
                 }
@@ -651,7 +651,7 @@ var ScoreZiplineClimbers = React.createClass({
                     this.props.handleScoreChange(0, "lowZiplineClimberScore1");
                 }
                 break;
-            case "mid":
+            case "mid1":
                 if(isPressed){
                     this.props.handleScoreChange(20, "midZiplineClimberScore1");
                 }
@@ -659,7 +659,7 @@ var ScoreZiplineClimbers = React.createClass({
                     this.props.handleScoreChange(0, "midZiplineClimberScore1");
                 }
                 break;
-            case "high":
+            case "high1":
                 if(isPressed){
                     this.props.handleScoreChange(20, "highZiplineClimberScore1");
                 }
@@ -671,17 +671,57 @@ var ScoreZiplineClimbers = React.createClass({
                 break;
         }
     },
+    handleChange2: function (event) {
+        var isPressed = (event.target.checked);
+        switch(event.target.name){
+            case "low2":
+                if(isPressed){
+                    this.props.handleScoreChange(20, "lowZiplineClimberScore2");
+                }
+                else {
+                    this.props.handleScoreChange(0, "lowZiplineClimberScore2");
+                }
+                break;
+            case "mid2":
+                if(isPressed){
+                    this.props.handleScoreChange(20, "midZiplineClimberScore2");
+                }
+                else {
+                    this.props.handleScoreChange(0, "midZiplineClimberScore2");
+                }
+                break;
+            case "high2":
+                if(isPressed){
+                    this.props.handleScoreChange(20, "highZiplineClimberScore2");
+                }
+                else {
+                    this.props.handleScoreChange(0, "highZiplineClimberScore2");
+                }
+                break;
+            default:
+                break;
+        }
+    },
     render: function () {
         return (
             <div>
-                <h3>Zipline Climbers Triggered</h3>
+                <h3>Zipline Climbers Triggered Target 1:</h3>
                 <form>
-                    <input type="checkbox" name="low" value="pressed" onChange={this.handleChange}
+                    <input type="checkbox" name="low1" value="pressed" onChange={this.handleChange1}
                     checked={this.props.scores.lowZiplineClimberScore1 == 20}/> Low Zone Trigger <br/>
-                    <input type="checkbox" name="mid" value="pressed" onChange={this.handleChange}
+                    <input type="checkbox" name="mid1" value="pressed" onChange={this.handleChange1}
                     checked={this.props.scores.midZiplineClimberScore1 == 20}/> Mid Zone Trigger <br/>
-                    <input type="checkbox" name="high" value="pressed" onChange={this.handleChange}
+                    <input type="checkbox" name="high1" value="pressed" onChange={this.handleChange1}
                     checked={this.props.scores.highZiplineClimberScore1 == 20}/> High Zone Trigger
+                </form>
+                <h3>Zipline Climbers Triggered Target 2:</h3>
+                <form>
+                    <input type="checkbox" name="low2" value="pressed" onChange={this.handleChange2}
+                    checked={this.props.scores.lowZiplineClimberScore2 == 20}/> Low Zone Trigger <br/>
+                    <input type="checkbox" name="mid2" value="pressed" onChange={this.handleChange2}
+                    checked={this.props.scores.midZiplineClimberScore2 == 20}/> Mid Zone Trigger <br/>
+                    <input type="checkbox" name="high2" value="pressed" onChange={this.handleChange2}
+                    checked={this.props.scores.highZiplineClimberScore2 == 20}/> High Zone Trigger
                 </form>
             </div>
         );
@@ -702,10 +742,10 @@ var Endgame = React.createClass({
 });
 
 var ScoreAllClearSignal = React.createClass({
-    handleChange: function (event) {
-        var isSignaled = (event.target.checked);
+    handleChange1: function (event) {
+        var isSignaled1 = (event.target.checked);
         var score = 0;
-        if (isSignaled) {
+        if (isSignaled1) {
             score = 20;
         }
         else {
@@ -713,13 +753,29 @@ var ScoreAllClearSignal = React.createClass({
         };
         this.props.handleScoreChange(score, "allClearScore1");
     },
+    handleChange2: function (event) {
+        var isSignaled2 = (event.target.checked);
+        var score = 0;
+        if (isSignaled2) {
+            score = 20;
+        }
+        else {
+            score = 0;
+        };
+        this.props.handleScoreChange(score, "allClearScore2");
+    },
     render: function () {
         return (
             <div>
-                <h3>All Clear Signal</h3>
+                <h3>All Clear Signal Target 1</h3>
                 <form>
-                    <input type="checkbox" name="isSignaled" value="signaled" onChange={this.handleChange}
+                    <input type="checkbox" name="isSignaled1" value="signaled" onChange={this.handleChange1}
                     checked={this.props.scores.allClearScore1 == 20}/> All Clear Signaled
+                </form>
+                <h3>All Clear Signal Target 2</h3>
+                <form>
+                    <input type="checkbox" name="isSignaled2" value="signaled" onChange={this.handleChange2}
+                    checked={this.props.scores.allClearScore2 == 20}/> All Clear Signaled
                 </form>
             </div>
         );
@@ -727,27 +783,46 @@ var ScoreAllClearSignal = React.createClass({
 });
 
 var ScoreEngameMountain = React.createClass({
-    handleChange: function (event) {
+    handleChange1: function (event) {
         var score = (event.target.value)
         this.props.handleScoreChange(score, "endgameMountainScore1");
+    },
+    handleChange2: function (event) {
+        var score = (event.target.value)
+        this.props.handleScoreChange(score, "endgameMountainScore2");
     },
     render: function () {
         return (
             <div>
                 <h3>Endgame Mountain Position</h3>
                 <form>
-                    <input type="radio" name="endgameMountainScore1" value={0} onChange={this.handleChange}
+                    <input type="radio" name="endgameMountainScore1" value={0} onChange={this.handleChange1}
                         checked={this.props.scores.endgameMountainScore1 == 0}/> None <br/>
-                    <input type="radio" name="endgameMountainScore1" value={5} onChange={this.handleChange}
+                    <input type="radio" name="endgameMountainScore1" value={5} onChange={this.handleChange1}
                         checked={this.props.scores.endgameMountainScore1 == 5}/> Partial <br/>
-                    <input type="radio" name="endgameMountainScore1" value={10} onChange={this.handleChange}
+                    <input type="radio" name="endgameMountainScore1" value={10} onChange={this.handleChange1}
                         checked={this.props.scores.endgameMountainScore1 == 10}/> Low Zone <br/>
-                    <input type="radio" name="endgameMountainScore1" value={20} onChange={this.handleChange}
+                    <input type="radio" name="endgameMountainScore1" value={20} onChange={this.handleChange1}
                         checked={this.props.scores.endgameMountainScore1 == 20}/> MidZone <br/>
-                    <input type="radio" name="endgameMountainScore1" value={40} onChange={this.handleChange}
+                    <input type="radio" name="endgameMountainScore1" value={40} onChange={this.handleChange1}
                         checked={this.props.scores.endgameMountainScore1 == 40}/> High Zone <br/>
-                    <input type="radio" name="endgameMountainScore1" value={80} onChange={this.handleChange}
+                    <input type="radio" name="endgameMountainScore1" value={80} onChange={this.handleChange1}
                         checked={this.props.scores.endgameMountainScore1 == 80}/> Hanging
+                </form>
+                <h3>Endgame Mountain Position</h3>
+                <form>
+                    <input type="radio" name="endgameMountainScore2" value={0} onChange={this.handleChange2}
+                        checked={this.props.scores.endgameMountainScore2 == 0}/> None <br/>
+                    <input type="radio" name="endgameMountainScore2" value={5} onChange={this.handleChange2}
+                        checked={this.props.scores.endgameMountainScore2 == 5}/> Partial <br/>
+                    <input type="radio" name="endgameMountainScore2" value={10} onChange={this.handleChange2}
+                        checked={this.props.scores.endgameMountainScore2 == 10}/> Low Zone <br/>
+                    <input type="radio" name="endgameMountainScore2" value={20} onChange={this.handleChange2}
+                        checked={this.props.scores.endgameMountainScore2 == 20}/> MidZone <br/>
+                    <input type="radio" name="endgameMountainScore2" value={40} onChange={this.handleChange2}
+                        checked={this.props.scores.endgameMountainScore2 == 40}/> High Zone <br/>
+                    <input type="radio" name="endgameMountainScore2" value={80} onChange={this.handleChange2}
+                        checked={this.props.scores.endgameMountainScore2 == 80}/> Hanging
                 </form>
             </div>
         );
