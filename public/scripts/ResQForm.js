@@ -121,7 +121,7 @@ var FTCResQCalculatorForm = React.createClass({
                 s.teleopClimbersScore2 = parseInt(score);
                 this.setState({ scores: s });
                 break;
-            case "highBucketScor2e":
+            case "highBucketScore2":
                 var s = this.state.scores;
                 s.highBucketScore2 = parseInt(score);
                 this.setState({ scores: s });
@@ -552,12 +552,12 @@ var ScoreHighBucket = React.createClass({
         return (
             <div>
                 <form>
-                    <h4 >High Bucket Target 1: </h4>
-                    <input type="number" name="high" min="0" max="16" value={(this.props.scores.highBucketScore1)/15} onChange={this.handleChange1}/><br/>
+                    <h4> High Bucket Target 1: </h4>
+                    <input type="number" name="high1" min="0" max="16" value={(this.props.scores.highBucketScore1)/15} onChange={this.handleChange1}/><br/>
                 </form>
                 <form>
-                    <h4 >High Bucket Target 2: </h4>
-                    <input type="number" name="high" min="0" max="16" value={(this.props.scores.highBucketScore2)/15} onChange={this.handleChange2}/><br/>
+                    <h4> High Bucket Target 2: </h4>
+                    <input type="number" name="high2" min="0" max="16" value={(this.props.scores.highBucketScore2)/15} onChange={this.handleChange2}/><br/>
                 </form>
             </div>
         );
@@ -571,18 +571,18 @@ var ScoreMidBucket = React.createClass({
     },
     handleChange2: function (event) {
         var score = (event.target.value) * 10;
-        this.props.handleScoreChange(score, "midBucketScore1");
+        this.props.handleScoreChange(score, "midBucketScore2");
     },
     render: function () {
         return (
             <div>
                 <form>
-                    <h4 >Mid Bucket Target 1: </h4>
-                    <input type="number" name="mid" min="0" max="16" value={(this.props.scores.midBucketScore1)/10} onChange={this.handleChange1}/><br/>
+                    <h4> Mid Bucket Target 1: </h4>
+                    <input type="number" name="mid1" min="0" max="16" value={(this.props.scores.midBucketScore1)/10} onChange={this.handleChange1}/><br/>
                 </form>
                 <form>
-                    <h4 >Mid Bucket Target 2: </h4>
-                    <input type="number" name="mid" min="0" max="16" value={(this.props.scores.midBucketScore2)/10} onChange={this.handleChange2}/><br/>
+                    <h4> Mid Bucket Target 2: </h4>
+                    <input type="number" name="mid2" min="0" max="16" value={(this.props.scores.midBucketScore2)/10} onChange={this.handleChange2}/><br/>
                 </form>
             </div>
         );
@@ -590,16 +590,24 @@ var ScoreMidBucket = React.createClass({
 });
 
 var ScoreLowBucket = React.createClass({
-    handleChange: function (event) {
+    handleChange1: function (event) {
         var score = (event.target.value) * 5;
         this.props.handleScoreChange(score, "lowBucketScore1");
+    },
+    handleChange2: function (event) {
+        var score = (event.target.value) * 5;
+        this.props.handleScoreChange(score, "lowBucketScore2");
     },
     render: function () {
         return (
             <div>
                 <form>
-                    Low Bucket:
-                    <input type="number" name="low" min="0" max="16" value={(this.props.scores.lowBucketScore1)/5} onChange={this.handleChange}/>
+                    <h4> Low Bucket Target 1: </h4>
+                    <input type="number" name="low1" min="0" max="16" value={(this.props.scores.lowBucketScore1)/5} onChange={this.handleChange1}/>
+                </form>
+                <form>
+                    <h4> Low Bucket Target 2: </h4>
+                    <input type="number" name="low2" min="0" max="16" value={(this.props.scores.lowBucketScore2)/5} onChange={this.handleChange2}/>
                 </form>
             </div>
         );
@@ -607,16 +615,24 @@ var ScoreLowBucket = React.createClass({
 });
 
 var ScoreFloorGoal = React.createClass({
-    handleChange: function (event) {
+    handleChange1: function (event) {
         var score = (event.target.value) * 1;
         this.props.handleScoreChange(score, "floorGoalScore1");
+    },
+    handleChange2: function (event) {
+        var score = (event.target.value) * 1;
+        this.props.handleScoreChange(score, "floorGoalScore2");
     },
     render: function () {
         return (
             <div>
                 <form>
-                    Floor Goal:
-                    <input type="number" name="floor" min="0" max="16" value={this.props.scores.floorGoalScore1} onChange={this.handleChange}/>
+                    <h4> Floor Goal Target 1: </h4>
+                    <input type="number" name="floor1" min="0" max="40" value={this.props.scores.floorGoalScore1} onChange={this.handleChange1}/>
+                </form>
+                <form>
+                    <h4> Floor Goal Target 2: </h4>
+                    <input type="number" name="floor2" min="0" max="40" value={this.props.scores.floorGoalScore2} onChange={this.handleChange2}/>
                 </form>
             </div>
         );
