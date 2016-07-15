@@ -19,7 +19,7 @@ var FTCResQCalculatorForm = React.createClass({
 
                 autonButtonScore2: 0,
                 autonClimbersScore2: 0,
-                autonMountainScore2: 0,
+                autonMountainScore2: 0, 
                 teleopClimbersScore2: 0,
                 highBucketScore2: 0,
                 midBucketScore2: 0,
